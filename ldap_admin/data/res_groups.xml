@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="group_ldap_admin" model="res.groups">
+            <field name="name">LDAP Admin</field>
+        </record>
+    </data>
+</openerp>

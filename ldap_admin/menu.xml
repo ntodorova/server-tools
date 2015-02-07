@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+
+        <menuitem id="menu_ldap_admin_root"
+            name="LDAP Admin" groups="group_ldap_admin"
+                sequence="125"/>
+
+        <menuitem id="menu_ldap_admin"
+            name="LDAP Admin"
+            parent="menu_ldap_admin_root" />
+
+    </data>
+</openerp>

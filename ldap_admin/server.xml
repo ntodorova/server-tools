@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+
+        <record id="view_ldap_admin_server_tree" model="ir.ui.view">
+            <field name="name">LDAP Admin Server View</field>
+            <field name="model">ldap.server</field>
+            <field name="arch" type="xml">
+                <tree string="LDAP Servers" version="7.0">
+                    <field name="name" />
+                    <field name="host" />
+                    <field name="port" />
+                    <field name="binddn" />
+                    <field name="basedn" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_ldap_admin_server_form" model="ir.ui.view">
+            <field name="name">LDAP Admin Server View</field>
+            <field name="model">ldap.server</field>
+            <field name="arch" type="xml">
+                <form string="LDAP Servers" version="7.0">
+                    <header>
+                    </header>
+                    <sheet>
+                        <label for="name" /> <field name="name" />
+                        <label for="host" /> <field name="host" />
+                        <label for="port" /> <field name="port" />
+                        <label for="binddn" /> <field name="binddn" />
+                        <label for="basedn" /> <field name="basedn" />
+                        <label for="password" /> <field name="password" password="True"/>
+
+                        <button name="action_test_connection" type="object" string="Test Connection" icon="gtk-network"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_ldap_admin_server" model="ir.actions.act_window">
+            <field name="name">LDAP Admin Server View</field>
+            <field name="res_model">ldap.server</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- menu -->
+        <menuitem id="menu_ldap_admin_server" name="Server" parent="menu_ldap_admin"
+            sequence="0" action="action_view_ldap_admin_server"/>
+
+    </data>
+</openerp>

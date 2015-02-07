@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <!-- select server to manage users for -->
+        <record id="ldap_admin_select_server_wizard_form_view0" model="ir.ui.view" >
+            <field name="name">LDAP Admin Manage Users</field>
+            <field name="model">select.server.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Wizard" version="7.0">
+                    <field name="password" invisible="1" />
+                    <separator string="Server" />
+                    <field name="server_id" nolabel="1" required="1" />
+                    <separator/>
+                    <footer>
+                        <button string="Next" name="action_server_selected" type="object" />
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- action to launch wizard on first step -->
+        <record id="action_ldap_admin_select_server_wizard0" model="ir.actions.act_window">
+            <field name="name">Manage Users</field>
+            <field name="res_model">select.server.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="ldap_admin_select_server_wizard_form_view0"/>
+            <field name="target">new</field>
+        </record>
+
+        <!-- ask password for server -->
+        <record id="ldap_admin_select_server_wizard_form_view1" model="ir.ui.view" >
+            <field name="name">LDAP Admin Manage Users</field>
+            <field name="model">select.server.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Wizard" version="7.0">
+                    <separator string="Server password" />
+                    <group columns="2">
+                        <label for="server_id" string="Enter password for server: " />
+                        <field name="server_id" nolabel="1" required="1" readonly="1"/>
+                        <field name="password" password="True" />
+                    </group>
+                    <separator/>
+                    <footer>
+                        <button string="Next" name="action_server_selected" type="object" />
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- action to launch wizard on second step -->
+        <record id="action_ldap_admin_select_server_wizard1" model="ir.actions.act_window">
+            <field name="name">Manage Users</field>
+            <field name="res_model">select.server.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="ldap_admin_select_server_wizard_form_view1"/>
+            <field name="target">new</field>
+        </record>
+
+        <!-- menu-->
+        <menuitem id="menu_ldap_admin_users" name="Manage Users" parent="menu_ldap_admin"
+            sequence="10" action="action_ldap_admin_select_server_wizard0"/>
+
+    </data>
+</openerp>

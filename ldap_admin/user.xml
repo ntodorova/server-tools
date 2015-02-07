@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record id="view_ldap_admin_user_tree" model="ir.ui.view">
+            <field name="name">LDAP Admin User View</field>
+            <field name="model">ldap.admin.user</field>
+            <field name="arch" type="xml">
+                <tree string="LDAP Users" version="7.0">
+                    <field name="name" />
+                    <field name="displayName" />
+                    <field name="email" />
+                    <field name="login" />
+                    <field name="descr" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_ldap_admin_user_form" model="ir.ui.view">
+            <field name="name">LDAP Admin User View</field>
+            <field name="model">ldap.admin.user</field>
+            <field name="arch" type="xml">
+                <form string="LDAP User" version="7.0">
+                    <header>
+                    </header>
+                    <sheet>
+                        <group columns="2">
+                            <field name="name"
+                                   attrs="{'readonly':[('local', '!=', True)]}"
+                                   on_change="onchange_username(name)"/>
+                            <field name="displayName"
+                                   on_change="onchange_displayname(name, displayName)"/>
+                            <field name="email" />
+                            <field name="login" />
+                            <field name="descr" />
+                            <field name="uidNumber" class="oe_read_only" attrs="{'invisible':[('local', '=', True)]}"/>
+                            <field name="password" password="True" attrs="{'required': [('local', '=', True)]}"/>
+                            <field name="password2" password="True" attrs="{'required': [('local', '=', True)]}"
+                                   on_change="onchange_check_pw(password,password2)"/>
+                            <field name="local" invisible="True" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</openerp>
